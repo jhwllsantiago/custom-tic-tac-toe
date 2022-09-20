@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Mali", cursive;
+  font-size: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: black;
+}
+body #img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+#game-container {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-setup {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  background-color: rgb(227, 230, 232);
+  border-radius: 20px;
+}
+#game-setup .name-input {
+  width: 200px;
+}
+#game-setup .symbol-input {
+  width: 40px;
+  text-align: center;
+}
+#game-setup > div > p {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-family: "Fredericka the Great", cursive;
+}
+#game-setup .flex-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#game-setup .space-between {
+  margin-top: 50px;
+  justify-content: space-between;
+}
+#game-setup input {
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+#game-setup button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+}
+#game-setup button:hover {
+  background-color: black;
+  color: white;
+}
+#game-setup input[type=number] {
+  width: 70px;
+  text-align: center;
+}
+#game-setup input[type=color] {
+  padding: 0;
+  width: 150%;
+  height: 150%;
+  margin: -25%;
+}
+#game-setup input[type=color]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+#game-setup input[type=color]::-webkit-color-swatch {
+  border: none;
+}
+#game-setup .color-picker-container {
+  overflow: hidden;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+#game-setup .disabled {
+  background-color: gray;
+  color: white;
+  pointer-events: none;
+}
+#game-setup .red-outline {
+  outline: 2px solid red;
+}
+
+#first-move {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Merienda One", cursive;
+}
+#first-move > p {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto 40px auto;
+  font-size: 1.5em;
+}
+#first-move > div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#first-move > div p {
+  width: 100px;
+  margin: 0 auto;
+}
+#first-move button {
+  font-family: "Fredericka the Great", cursive;
+  font-size: 40px;
+  padding: 10px 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: transparent;
+}
+#first-move button:hover {
+  color: white;
+  background-color: black;
+}
+
+#board {
+  display: none;
+  gap: 2px;
+  margin-top: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-family: "Fredericka the Great", cursive;
+  font-weight: bold;
+}
+#board .cell {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 150px;
+  min-width: 30px;
+  max-height: 150px;
+  min-height: 30px;
+  background-color: #e6e6e6;
+}
+
+#info {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: "Merienda One", cursive;
+}
+#info #info-name-one {
+  width: 250px;
+  text-align: right;
+}
+#info #info-score-one {
+  width: 50px;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Fredericka the Great", cursive;
+}
+#info #info-message {
+  width: 350px;
+  font-size: 16px;
+}
+#info #info-score-two {
+  width: 50px;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Fredericka the Great", cursive;
+}
+#info #info-name-two {
+  width: 250px;
+  text-align: left;
+}
+
+#controls-a,
+#controls-b {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+#controls-a button,
+#controls-b button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  width: 140px;
+  color: white;
+  background-color: black;
+}
+#controls-a button:hover,
+#controls-b button:hover {
+  color: black;
+  background-color: limegreen;
+}
+#controls-a .disabled,
+#controls-b .disabled {
+  background-color: gray;
+  pointer-events: none;
+}/*# sourceMappingURL=main.css.map */

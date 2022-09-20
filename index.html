@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./assets/icon.png" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Mali&family=Merienda+One&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/ee89b5ee3e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./scripts/global.js" defer></script>
+    <script src="./scripts/settings.js" type="module"></script>
+    <script src="./scripts/board.js" type="module"></script>
+    <script src="./scripts/aesthetics.js" type="module"></script>
+    <script src="./scripts/controls.js" type="module"></script>
+    <script src="./scripts/scoring.js" type="module"></script>
+    <script src="./scripts/helper.js" type="module"></script>
+    <title>TIC TAC TOE</title>
+  </head>
+  <body>
+    <img src="./assets/paper.jpg" id="img" />
+    <section id="game-setup">
+      <div>
+        <p>TIC TAC TOE</p>
+      </div>
+      <div class="flex-container">
+        <label>Player One:</label>
+        <input
+          class="name-input input-field"
+          type="text"
+          data-name-one
+          autofocus
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="15"
+          placeholder="John"
+        />
+        <input
+          class="symbol-input input-field"
+          type="text"
+          data-symbol-one
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="1"
+          placeholder="X"
+        />
+        <div class="color-picker-container">
+          <input type="color" data-color-one tabindex="-1" value="#000080" />
+        </div>
+      </div>
+      <div class="flex-container">
+        <label>Player Two:</label>
+        <input
+          class="name-input input-field"
+          type="text"
+          data-name-two
+          autofocus
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="15"
+          placeholder="Jane"
+        />
+        <input
+          class="symbol-input input-field"
+          type="text"
+          data-symbol-two
+          autocomplete="off"
+          spellcheck="false"
+          maxlength="1"
+          placeholder="O"
+        />
+        <div class="color-picker-container">
+          <input type="color" data-color-two tabindex="-1" value="#FFB6C1" />
+        </div>
+      </div>
+      <div class="flex-container">
+        <input
+          class="input-field"
+          type="number"
+          data-board-size
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="10"
+          min="3"
+          max="99"
+        />
+        <label> cells per row and column</label>
+      </div>
+      <div class="flex-container">
+        <input
+          class="input-field"
+          type="number"
+          data-pattern-length
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="5"
+          min="3"
+          max="99"
+        />
+        <label> matching symbols to score</label>
+      </div>
+      <div class="flex-container">
+        <input
+          class="input-field"
+          type="number"
+          data-max-points
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="3"
+          min="2"
+          max="99"
+        />
+        <label> points to win</label>
+      </div>
+      <div class="flex-container space-between">
+        <button id="verify">
+          <i class="fa-solid fa-code-compare"></i> Verify
+        </button>
+        <button id="save"><i class="fa-solid fa-floppy-disk"></i> Save</button>
+        <button id="quick-start">
+          <i class="fa-solid fa-hourglass-start"></i> Quick Start
+        </button>
+      </div>
+    </section>
+    <section id="first-move">
+      <p>Who should go first?</p>
+      <div>
+        <button id="first-move-one">John1234567890</button>
+        <p>vs</p>
+        <button id="first-move-two">Jane</button>
+      </div>
+    </section>
+    <section id="game-container">
+      <div id="info">
+        <p id="info-name-one">PLAYER1</p>
+        <p id="info-score-one">0</p>
+        <p id="info-message"></p>
+        <p id="info-score-two">0</p>
+        <p id="info-name-two">PLAYER2</p>
+      </div>
+      <div id="controls">
+        <div id="controls-a">
+          <button id="start-over">Start Over</button>
+          <button id="undo">Undo</button>
+          <button id="redo">Redo</button>
+        </div>
+        <div id="controls-b">
+          <button id="replay">Replay</button>
+          <button id="edit-settings">Edit Settings</button>
+          <button id="new-game">New Game</button>
+          <button id="next-round">Next Round</button>
+        </div>
+      </div>
+      <div id="board"></div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+#info {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-family: "Merienda One", cursive;
+
+  #info-name-one {
+    width: 250px;
+    text-align: right;
+  }
+  #info-score-one {
+    width: 50px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: "Fredericka the Great", cursive;
+  }
+  #info-message {
+    width: 350px;
+    font-size: 16px;
+  }
+  #info-score-two {
+    width: 50px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: "Fredericka the Great", cursive;
+  }
+  #info-name-two {
+    width: 250px;
+    text-align: left;
+  }
+}

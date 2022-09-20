@@ -1,0 +1,88 @@
+#game-setup {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+  background-color: rgb(227, 230, 232);
+  border-radius: 20px;
+
+  .name-input {
+    width: 200px;
+  }
+  .symbol-input {
+    width: 40px;
+    text-align: center;
+  }
+
+  & > div > p {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    font-family: "Fredericka the Great", cursive;
+  }
+
+  .flex-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .space-between {
+    margin-top: 50px;
+    justify-content: space-between;
+  }
+  input {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+  input[type="number"] {
+    width: 70px;
+    text-align: center;
+  }
+  input[type="color"] {
+    padding: 0;
+    width: 150%;
+    height: 150%;
+    margin: -25%;
+  }
+  input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  input[type="color"]::-webkit-color-swatch {
+    border: none;
+  }
+  .color-picker-container {
+    overflow: hidden;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+  .disabled {
+    background-color: gray;
+    color: white;
+    pointer-events: none;
+  }
+  .red-outline {
+    outline: 2px solid red;
+  }
+}
