@@ -176,7 +176,7 @@ const inputDisableToggle = () => {
     patterLength.disabled = false;
   }
 };
-editSettings.addEventListener("click", () => {
+const editSettingsFunc = () => {
   isEditing = 1;
   img.style.opacity = "0.2";
   gameContainer.style.opacity = "0.4";
@@ -184,6 +184,12 @@ editSettings.addEventListener("click", () => {
   gameSetup.style.display = "block";
   inputDisableToggle();
   quickStartBtn.classList.add("disabled");
+};
+editSettingsA.addEventListener("click", () => {
+  editSettingsFunc();
+});
+editSettingsB.addEventListener("click", () => {
+  editSettingsFunc();
 });
 const currentValuesChecker = () => {
   player = player === playerOne.name ? nameOne.value : nameTwo.value;
@@ -196,17 +202,6 @@ const currentValuesChecker = () => {
       : symbolTwo.value;
 };
 const symbolreplacer = (currentSymbolOne, currentSymbolTwo) => {
-  boardState = boardState.map((row) => {
-    row = row.map((item) => {
-      if (item === currentSymbolOne) {
-        item = playerOne.symbol;
-      } else if (item === currentSymbolTwo) {
-        item = playerTwo.symbol;
-      }
-      return item;
-    });
-    return row;
-  });
   history = history.map((board) => {
     board = board.map((row) => {
       row = row.map((item) => {
@@ -221,6 +216,7 @@ const symbolreplacer = (currentSymbolOne, currentSymbolTwo) => {
     });
     return board;
   });
+  boardState = structuredClone(history[moves]);
 };
 const pointsToWinChecker = () => {
   maxPoints.value =

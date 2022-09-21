@@ -46,7 +46,8 @@ const startOver = document.querySelector("#start-over");
 const nextRound = document.querySelector("#next-round");
 const redo = document.querySelector("#redo");
 const replay = document.querySelector("#replay");
-const editSettings = document.querySelector("#edit-settings");
+const editSettingsA = document.querySelector("#edit-settings-a");
+const editSettingsB = document.querySelector("#edit-settings-b");
 const newGame = document.querySelector("#new-game");
 
 const message = document.querySelector("#info-message");

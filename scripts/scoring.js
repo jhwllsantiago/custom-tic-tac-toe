@@ -31,7 +31,6 @@ export const checkWinner = () => {
     gameEnded = 1;
     updateMessage();
     nextRound.classList.add("disabled");
-    newGame.style.display = "block";
-    editSettings.style.display = "none";
+    newGame.classList.remove("disabled");
   }
 };

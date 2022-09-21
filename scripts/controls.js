@@ -11,15 +11,12 @@ import { updateScores } from "./scoring.js";
 let interval;
 let isGameEndedSetToOne = 0;
 
-newGame.style.display = "none";
-
 const resetControls = () => {
   controlsA.style.display = "flex";
   controlsB.style.display = "none";
   undo.classList.add("disabled");
   redo.classList.add("disabled");
-  editSettings.style.display = "block";
-  newGame.style.display = "none";
+  newGame.classList.add("disabled");
   nextRound.classList.remove("disabled");
 };
 resetControls();
@@ -71,7 +68,7 @@ replay.addEventListener("click", () => {
   gameEnded = isGameEndedSetToOne ? !gameEnded : gameEnded;
   replay.classList.add("disabled");
   newGame.classList.add("disabled");
-  editSettings.classList.add("disabled");
+  editSettingsB.classList.add("disabled");
   nextRound.classList.add("disabled");
   player = settings.firstPlayer;
   symbol = settings.firstSymbol;
@@ -94,8 +91,8 @@ function replayInterval() {
     updateMessage();
     highlightCells();
     replay.classList.remove("disabled");
-    newGame.classList.remove("disabled");
-    editSettings.classList.remove("disabled");
+    editSettingsB.classList.remove("disabled");
+    if (gameEnded) newGame.classList.remove("disabled");
     if (!gameEnded) nextRound.classList.remove("disabled");
     return;
   }
