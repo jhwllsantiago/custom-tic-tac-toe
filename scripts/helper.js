@@ -11,9 +11,10 @@ export const disablePointerEvents = () => {
 };
 
 export const updatePointerEvents = () => {
-  document.querySelectorAll(".cell").forEach((cell) => {
+  document.querySelectorAll(".cell").forEach((cell, idx) => {
+    const cellData = history[moves].flat()[idx];
     cell.style.pointerEvents = "all";
-    if (cell.textContent !== "") cell.style.pointerEvents = "none";
+    if (cellData !== "") cell.style.pointerEvents = "none";
   });
 };
 

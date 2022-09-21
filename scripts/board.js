@@ -38,7 +38,6 @@ function createCells() {
 
     cell.addEventListener("click", () => {
       cell.style.pointerEvents = "none";
-      updateCellColor();
       undo.classList.remove("disabled");
       userHasUndoed();
 
@@ -48,6 +47,7 @@ function createCells() {
       moves++;
       history[moves] = structuredClone(boardState);
       updateDisplay(boardState);
+      updateCellColor();
       lookForPattern();
       if (!roundEnded) swapPlayers();
     });
@@ -151,23 +151,6 @@ function lookForPattern() {
   }
 
   ////  Diagonally (positive slope) ////
-  // for (let row = 0; row <= boardSize - patternLength; row++) {
-  //   for (let col = boardSize - 1; col >= boardSize - patternLength; col--) {
-  //     clearCounters();
-  //     for (let offset = 0; offset < patternLength; offset++) {
-  //       if (boardState[row + offset][col - offset] === symbol) {
-  //         cellToBeHighlighted(row + offset, col - offset);
-  //         patternCounter++;
-  //         if (patternCounter === patternLength) {
-  //           postGameEvents();
-  //           return;
-  //         }
-  //       } else {
-  //         clearCounters();
-  //       }
-  //     }
-  //   }
-  // }
   for (let row = boardSize - 1; row > patternLength - 2; row--) {
     for (let col = 0; col <= boardSize - patternLength; col++) {
       clearCounters();

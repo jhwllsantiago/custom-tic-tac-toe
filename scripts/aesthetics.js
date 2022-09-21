@@ -1,11 +1,12 @@
 "use strict";
 
 export function updateCellColor() {
-  document.querySelectorAll(".cell").forEach((cell) => {
-    if (cell.textContent === playerOne.symbol) {
+  document.querySelectorAll(".cell").forEach((cell, idx) => {
+    const cellData = history[moves].flat()[idx];
+    if (cellData === playerOne.symbol) {
       cell.style.backgroundColor = playerOne.color;
       cell.style.color = isColorLight(playerOne.color) ? "black" : "white";
-    } else if (cell.textContent === playerTwo.symbol) {
+    } else if (cellData === playerTwo.symbol) {
       cell.style.backgroundColor = playerTwo.color;
       cell.style.color = isColorLight(playerTwo.color) ? "black" : "white";
     } else {
