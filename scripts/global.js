@@ -31,8 +31,7 @@ let boardSize;
 let patternLength;
 let cellSize;
 
-let highlightOne = [];
-let highlightTwo = [];
+let indexOfCellsToHighlight = [];
 
 let roundEnded = 0;
 let gameEnded = 0;

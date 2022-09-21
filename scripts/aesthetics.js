@@ -1,6 +1,6 @@
 "use strict";
 
-export function updateCellColor() {
+export const updateCellColor = () => {
   document.querySelectorAll(".cell").forEach((cell, idx) => {
     const cellData = history[moves].flat()[idx];
     if (cellData === playerOne.symbol) {
@@ -14,17 +14,13 @@ export function updateCellColor() {
       cell.style.color = "black";
     }
   });
-}
-export function highlightCells() {
-  highlightOne.forEach((idx) => {
+};
+export const highlightCells = () => {
+  indexOfCellsToHighlight.forEach((idx) => {
     const cell = document.querySelectorAll(".cell")[idx];
     cell.style.backgroundColor = "#84e184";
   });
-  highlightTwo.forEach((idx) => {
-    const cell = document.querySelectorAll(".cell")[idx];
-    cell.style.backgroundColor = "#84e184";
-  });
-}
+};
 
 export const colorShade = (color, amount) => {
   color = color.replace("#", "");

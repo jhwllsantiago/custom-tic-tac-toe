@@ -1,5 +1,5 @@
 "use strict";
-import { highlightCells, updateCellColor } from "./aesthetics.js";
+import { highlightCells } from "./aesthetics.js";
 import { createGame, updateDisplay } from "./board.js";
 import { capitalizeFirstLetter, updateMessage } from "./helper.js";
 import { updateInfo } from "./scoring.js";
@@ -201,7 +201,7 @@ const currentValuesChecker = () => {
       ? symbolOne.value
       : symbolTwo.value;
 };
-const symbolreplacer = (currentSymbolOne, currentSymbolTwo) => {
+const replaceSymbols = (currentSymbolOne, currentSymbolTwo) => {
   history = history.map((board) => {
     board = board.map((row) => {
       row = row.map((item) => {
@@ -234,11 +234,10 @@ saveBtn.addEventListener("click", () => {
 
     currentValuesChecker();
     assignValues();
-    symbolreplacer(currentSymbolOne, currentSymbolTwo);
+    replaceSymbols(currentSymbolOne, currentSymbolTwo);
     updateInfo();
     updateMessage();
     updateDisplay(boardState);
-    updateCellColor();
     highlightCells();
     saveBtn.classList.add("disabled");
   }

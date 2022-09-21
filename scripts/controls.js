@@ -1,6 +1,6 @@
 "use strict";
 import { updateDisplay, swapPlayers } from "./board.js";
-import { highlightCells, updateCellColor } from "./aesthetics.js";
+import { highlightCells } from "./aesthetics.js";
 import {
   disablePointerEvents,
   updateMessage,
@@ -22,13 +22,16 @@ const resetControls = () => {
 resetControls();
 
 const resetBoard = () => {
+  gameEnded = 0;
+  roundEnded = 0;
+  isDraw = 0;
+  indexOfCellsToHighlight.length = 0;
   moves = 0;
   boardState = Array.from(new Array(boardSize), () =>
     Array.from(new Array(boardSize), () => "")
   );
   history = [structuredClone(boardState)];
   updateDisplay(boardState);
-  updateCellColor();
   updatePointerEvents();
   updateMessage();
 };
@@ -43,7 +46,6 @@ undo.addEventListener("click", () => {
   redo.classList.remove("disabled");
   moves--;
   updateDisplay(history[moves]);
-  updateCellColor();
   swapPlayers();
   updatePointerEvents();
   if (moves < 1) {
@@ -54,7 +56,6 @@ redo.addEventListener("click", () => {
   undo.classList.remove("disabled");
   moves++;
   updateDisplay(history[moves]);
-  updateCellColor();
   swapPlayers();
   updatePointerEvents();
   if (moves + 1 >= history.length) {
@@ -76,13 +77,11 @@ replay.addEventListener("click", () => {
   disablePointerEvents();
   moves = 0;
   updateDisplay(history[moves]);
-  updateCellColor();
   interval = setInterval(replayInterval, 500);
 });
 function replayInterval() {
   moves++;
   updateDisplay(history[moves]);
-  updateCellColor();
   if (moves + 1 >= history.length) {
     roundEnded = 1;
     gameEnded = isGameEndedSetToOne ? !gameEnded : gameEnded;
@@ -104,16 +103,9 @@ nextRound.addEventListener("click", () => {
   settings.firstSymbol = symbol;
   resetControls();
   resetBoard();
-  roundEnded = 0;
-  isDraw = 0;
   updateMessage();
 });
 newGame.addEventListener("click", () => {
-  gameEnded = 0;
-  roundEnded = 0;
-  isDraw = 0;
-  highlightOne = [];
-  highlightTwo = [];
   playerOne.score = 0;
   playerTwo.score = 0;
   resetBoard();

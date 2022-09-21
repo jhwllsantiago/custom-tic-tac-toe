@@ -47,7 +47,6 @@ function createCells() {
       moves++;
       history[moves] = structuredClone(boardState);
       updateDisplay(boardState);
-      updateCellColor();
       lookForPattern();
       if (!roundEnded) swapPlayers();
     });
@@ -66,26 +65,22 @@ export function swapPlayers() {
 }
 export function updateDisplay(data) {
   const cells = document.querySelectorAll(".cell");
-  for (const [idx, cell] of cells.entries()) {
-    let col = idx % boardSize;
-    let row = (idx - col) / boardSize;
-    cell.textContent = data[row][col];
-  }
+  cells.forEach((cell, idx) => {
+    cell.textContent = data.flat()[idx];
+  });
+  updateCellColor();
 }
 function lookForPattern() {
   let patternCounter = 0;
   const clearCounters = () => {
     patternCounter = 0;
-    highlightOne.length = 0;
-    highlightTwo.length = 0;
+    indexOfCellsToHighlight.length = 0;
   };
   const cellToBeHighlighted = (row, col) => {
     let idx = row * boardSize + col;
-    symbol === playerOne.symbol
-      ? highlightOne.push(idx)
-      : highlightTwo.push(idx);
+    indexOfCellsToHighlight.push(idx);
   };
-  const postGameEvents = () => {
+  const roundEndEvents = () => {
     roundEnded = 1;
     disablePointerEvents();
     updateMessage();
@@ -105,7 +100,7 @@ function lookForPattern() {
         cellToBeHighlighted(row, col);
         patternCounter++;
         if (patternCounter === patternLength) {
-          postGameEvents();
+          roundEndEvents();
           return;
         }
       } else {
@@ -122,7 +117,7 @@ function lookForPattern() {
         cellToBeHighlighted(row, col);
         patternCounter++;
         if (patternCounter === patternLength) {
-          postGameEvents();
+          roundEndEvents();
           return;
         }
       } else {
@@ -140,7 +135,7 @@ function lookForPattern() {
           cellToBeHighlighted(row + offset, col + offset);
           patternCounter++;
           if (patternCounter === patternLength) {
-            postGameEvents();
+            roundEndEvents();
             return;
           }
         } else {
@@ -159,7 +154,7 @@ function lookForPattern() {
           cellToBeHighlighted(row - offset, col + offset);
           patternCounter++;
           if (patternCounter === patternLength) {
-            postGameEvents();
+            roundEndEvents();
             return;
           }
         } else {
@@ -173,6 +168,7 @@ function lookForPattern() {
   if (moves >= boardSize * boardSize) {
     roundEnded = 1;
     isDraw = 1;
+    indexOfCellsToHighlight.length = 0;
     updateMessage();
     controlsA.style.display = "none";
     controlsB.style.display = "flex";
