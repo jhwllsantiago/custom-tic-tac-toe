@@ -6,6 +6,7 @@ const firstMoveBtnOne = document.querySelector("#first-move-one");
 const firstMoveBtnTwo = document.querySelector("#first-move-two");
 const gameContainer = document.querySelector("#game-container");
 const inputFields = document.querySelectorAll(".input-field");
+const closeBtn = document.querySelector(".fa-circle-xmark");
 const nameOne = document.querySelector("[data-name-one]");
 const symbolOne = document.querySelector("[data-symbol-one]");
 const colorOne = document.querySelector("[data-color-one]");

@@ -1,7 +1,12 @@
 "use strict";
 import { highlightCells } from "./aesthetics.js";
 import { createGame, updateDisplay } from "./board.js";
-import { capitalizeFirstLetter, updateMessage } from "./helper.js";
+import {
+  capitalizeFirstLetter,
+  disablePointerEvents,
+  updateMessage,
+  updatePointerEvents,
+} from "./helper.js";
 import { updateInfo } from "./scoring.js";
 
 const boardSize = document.querySelector("[data-board-size]");
@@ -126,6 +131,9 @@ function formatValues() {
   symbolOne.value = symbolOne.value.toUpperCase();
   nameTwo.value = capitalizeFirstLetter(nameTwo.value.trim());
   symbolTwo.value = symbolTwo.value.toUpperCase();
+  boardSize.value = parseInt(boardSize.value);
+  patterLength.value = parseInt(patterLength.value);
+  maxPoints.value = parseInt(maxPoints.value);
 }
 
 function assignValues() {
@@ -177,10 +185,12 @@ const inputDisableToggle = () => {
   }
 };
 const editSettingsFunc = () => {
+  closeBtn.style.display = "block";
   isEditing = 1;
   img.style.opacity = "0.2";
   gameContainer.style.opacity = "0.4";
   gameContainer.style.pointerEvents = "none";
+  disablePointerEvents();
   gameSetup.style.display = "block";
   inputDisableToggle();
   quickStartBtn.classList.add("disabled");
@@ -241,11 +251,21 @@ saveBtn.addEventListener("click", () => {
     highlightCells();
     saveBtn.classList.add("disabled");
   }
+  closeSettings();
+});
+
+closeBtn.addEventListener("click", () => {
+  closeSettings();
+});
+
+function closeSettings() {
+  closeBtn.style.display = "none";
   isEditing = 0;
   img.style.opacity = "1";
   gameContainer.style.opacity = "1";
   gameContainer.style.pointerEvents = "all";
+  if (!roundEnded) updatePointerEvents();
   gameSetup.style.display = "none";
   inputDisableToggle();
   quickStartBtn.classList.remove("disabled");
-});
+}

@@ -23,6 +23,20 @@
     margin-bottom: 30px;
     font-family: "Fredericka the Great", cursive;
   }
+  .fa-circle-xmark {
+    cursor: pointer;
+    display: none;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+
+    &:hover {
+      color: black;
+    }
+  }
 
   .flex-container {
     margin-bottom: 20px;

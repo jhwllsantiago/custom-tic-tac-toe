@@ -53,6 +53,19 @@ body #img {
   margin-bottom: 30px;
   font-family: "Fredericka the Great", cursive;
 }
+#game-setup .fa-circle-xmark {
+  cursor: pointer;
+  display: none;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+#game-setup .fa-circle-xmark:hover {
+  color: black;
+}
 #game-setup .flex-container {
   margin-bottom: 20px;
   display: flex;
