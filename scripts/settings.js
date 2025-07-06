@@ -131,9 +131,9 @@ function formatValues() {
   symbolOne.value = symbolOne.value.toUpperCase();
   nameTwo.value = capitalizeFirstLetter(nameTwo.value.trim());
   symbolTwo.value = symbolTwo.value.toUpperCase();
-  boardSize.value = parseInt(boardSize.value);
-  patterLength.value = parseInt(patterLength.value);
-  maxPoints.value = parseInt(maxPoints.value);
+  boardSize.value = parseInt(boardSize.value) || 10;
+  patterLength.value = parseInt(patterLength.value) || 5;
+  maxPoints.value = parseInt(maxPoints.value) || 3;
 }
 
 function assignValues() {
