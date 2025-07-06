@@ -118,6 +118,9 @@ function inputChecker() {
   }
   if (parseInt(boardSize.value) < parseInt(patterLength.value)) {
     patterLength.value = boardSize.value;
+    if (patterLength.value < 3) {
+      patterLength.value = 3;
+    }
   }
 
   if (!document.querySelector(".red-outline")) {
